@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Events from "./pages/Events";
+import NotFound from "./pages/NotFound";
 
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <div className="bg-[#ffffff] w-full min-h-screen flex flex-col">
+        {/* Header */}
+        <header className="bg-secondary text-white py-4 px-10">
+          <nav>
+            <ul className="flex space-x-8">
+              <li>
+                <a href="/" className="hover:underline">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="hover:underline">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="/events" className="hover:underline">
+                  Events
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
 
-export default App
+        {/* Main */}
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/*" element={<NotFound />} />
+          </Routes>
+        </main>
+
+        {/* Footer */}
+        <footer className="bg-gray-800 text-white p-4 text-center">
+          © 2024 QSEC
+        </footer>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
