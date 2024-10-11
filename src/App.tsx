@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound";
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="bg-[#ffffff] w-full min-h-screen flex flex-col">
+      <div className="w-full min-h-screen flex flex-col">
         {/* Header */}
         <header className="bg-secondary text-white py-4 px-10">
           <nav>
