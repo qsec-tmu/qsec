@@ -11,6 +11,7 @@ Add images of website here
 
 ## Features
 Features that have been or will be implemented
+- Send emails (use email.js)
 
 ## Dependencies 
 The following dependencies are used:
