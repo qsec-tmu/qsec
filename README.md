@@ -15,5 +15,6 @@ Features that have been or will be implemented
 ## Dependencies 
 The following dependencies are used:
 - React
+- Tailwind CSS
 - TypeScript
 - Vite
