@@ -13,6 +13,10 @@ Add images of website here
 Features that have been or will be implemented
 - Send emails (use email.js)
 
+Backend features
+- Store events and blogs
+- Account for members (later on)
+
 ## Dependencies 
 The following dependencies are used:
 - React
