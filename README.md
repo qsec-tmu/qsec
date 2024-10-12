@@ -24,3 +24,6 @@ The following dependencies are used:
 - Tailwind CSS
 - TypeScript
 - Vite
+
+To add:
+- NodeJS
