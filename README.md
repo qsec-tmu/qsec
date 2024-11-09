@@ -12,6 +12,7 @@ Add images of website here
 ## Features
 Features that have been or will be implemented
 - Send emails (use email.js)
+- Events Page and updates
 
 Backend features
 - Store events and blogs
