@@ -1,12 +1,14 @@
 import React from "react";
+import Hero from "../components/home/Hero";
+import Gallery from "../components/home/Gallery";
+import Motto from "../components/home/Motto";
 
 const Home: React.FC = () => {
   return (
-    <div className="w-full flex flex-col justify-center items-center px-12">
-      <h1 className="text-3xl text-center font-bold mt-12">Home</h1>
-      <p className="text-center">
-        Home page.
-      </p>
+    <div>
+      <Hero />
+      <Gallery />
+      <Motto />
     </div>
   );
 };

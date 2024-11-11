@@ -8,7 +8,7 @@ const quantumQuotes = [
   "'Every quantum state holds infinite possibilities; choose the one that inspires you.' - Dr. Kai Navarro",
   "'Particles may be uncertain, but in their dance lies the certainty of existence.' - Prof. Anya Rhee",
   "'Quantum leaps teach us that change is not linear, but revolutionary.' - Dr. Victor Maelis",
-  "'Superposition reminds us that we are not one thing but many, waiting to be observed.' - Dr. Lila Travers"
+  "'Superposition reminds us that we are not one thing but many, waiting to be observed.' - Dr. Lila Travers",
 ];
 
 const Hero: React.FC = () => {
@@ -17,12 +17,12 @@ const Hero: React.FC = () => {
 
   return (
     <div className="relative h-screen flex flex-col justify-center items-center bg-cover bg-center bg-[url('./src/assets/heroBackground.png')] text-white">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-center">
-        Quantum Science and Engineering
-      </h1>
-      <p className="text-xl sm:text-2xl md:text-3xl text-center">
-        {quote}
-      </p>
+      <div className="w-4/5">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-center">
+          Quantum Science and Engineering
+        </h1>
+        <p className="text-xl sm:text-2xl md:text-3xl text-center">{quote}</p>
+      </div>
     </div>
   );
 };
