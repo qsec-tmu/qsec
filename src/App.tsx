@@ -5,33 +5,14 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Events from "./pages/Events";
 import NotFound from "./pages/NotFound";
+import Navbar from "./components/nav/Navbar";
 
 const App: React.FC = () => {
   return (
     <Router>
       <div className="w-full min-h-screen flex flex-col">
         {/* Header */}
-        <header className="bg-secondary text-white py-4 px-10">
-          <nav>
-            <ul className="flex space-x-8">
-              <li>
-                <a href="/" className="hover:underline">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="hover:underline">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="/events" className="hover:underline">
-                  Events
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <Navbar />
 
         {/* Main */}
         <main className="flex-grow">
@@ -44,6 +25,7 @@ const App: React.FC = () => {
         </main>
 
         {/* Footer */}
+        {/** TODO: move footer to separate component */}
         <footer className="bg-gray-800 text-white p-4 text-center">
           © 2024 QSEC
         </footer>
