@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Events from "./pages/Events";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/nav/Navbar";
-
+import Blog from "./pages/Blog";
 const App: React.FC = () => {
   return (
     <Router>
@@ -20,6 +20,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </main>
