@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Gallery from "./components/Gallery";
 import Motto from "./components/Motto";
 import './index.css';
+import EventsPage from "./pages/Events";
 
 const App: React.FC = () => {
   return (
@@ -42,7 +43,7 @@ const About: React.FC = () => {
 const Events: React.FC = () => {
   return (
     <div className="text-black p-8 bg-white h-screen flex items-center justify-center">
-      <h1>Welcome to the Events page!</h1>
+      <EventsPage />
     </div>
   );
 };
