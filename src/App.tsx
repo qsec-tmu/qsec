@@ -7,6 +7,8 @@ import Events from "./pages/Events";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/nav/Navbar";
 import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -22,6 +24,7 @@ const App: React.FC = () => {
             <Route path="/events" element={<Events />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/*" element={<NotFound />} />
+            <Route path="contact" element={<Contact/>} />
           </Routes>
         </main>
 
