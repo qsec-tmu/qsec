@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-center">
           Quantum Science and Engineering
         </h1>
-        <p className="text-xl sm:text-2xl md:text-3xl text-center">{quote}</p>
+        <p className="text-xl sm:text-2xl md:text-3xl text-center text-white">{quote}</p>
       </div>
     </div>
   );
