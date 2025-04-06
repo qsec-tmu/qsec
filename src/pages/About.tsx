@@ -50,6 +50,7 @@ const AboutPage = () => {
       <footer className="w-full mt-auto">
         <Motto /> 
       </footer>
+
     </div>
   );
 };
