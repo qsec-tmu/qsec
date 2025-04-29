@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const Contact: React.FC = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const [messageSent, setMessageSent] = useState(false);
+  const [error, setError] = useState(false);
+
   const showMenu = () => {
     const navLinks = document.getElementById("navLinks");
     if (navLinks) navLinks.style.right = "0";
@@ -9,6 +14,30 @@ const Contact: React.FC = () => {
   const hideMenu = () => {
     const navLinks = document.getElementById("navLinks");
     if (navLinks) navLinks.style.right = "-100%";
+  };
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setMessageSent(false);
+    setError(false);
+
+    emailjs
+      .sendForm(
+        "service_xuuod99",     // Replace with your EmailJS service ID
+        "template_aa5drnn",    // Replace with your EmailJS template ID
+        form.current!,
+        "o9IsURtmzEJlHqWKr"      // Replace with your EmailJS public key
+      )
+      .then(
+        () => {
+          setMessageSent(true);
+          if (form.current) form.current.reset();
+        },
+        (error) => {
+          console.error("Email send error:", error);
+          setError(true);
+        }
+      );
   };
 
   return (
@@ -22,7 +51,6 @@ const Contact: React.FC = () => {
             className="fixed top-0 right-[-100%] w-64 h-full bg-gray-800 flex flex-col gap-6 items-end px-6 pt-20 transition-all duration-300 z-50"
           >
             <i className="fa fa-times text-2xl cursor-pointer" onClick={hideMenu}></i>
-            {/* Add any links here */}
           </div>
           <i className="fa fa-bars text-white text-2xl cursor-pointer md:hidden" onClick={showMenu}></i>
         </nav>
@@ -70,7 +98,6 @@ const Contact: React.FC = () => {
                 <p className="text-gray-400">Follow us on Instagram</p>
               </div>
             </div>
-
             <div className="flex items-start gap-4">
               <i className="fab fa-discord text-pink-500 text-2xl"></i>
               <div>
@@ -88,11 +115,10 @@ const Contact: React.FC = () => {
               </div>
             </div>
           </div>
-          
 
           {/* Contact Form */}
           <div className="flex-1 bg-gray-800 p-8 rounded-lg shadow-lg">
-            <form action="form-handler.php" method="post" className="space-y-4">
+            <form ref={form} onSubmit={sendEmail} className="space-y-4">
               <input
                 type="text"
                 name="name"
@@ -108,8 +134,8 @@ const Contact: React.FC = () => {
                 className="w-full p-3 bg-gray-900 text-white rounded border border-gray-700"
               />
               <textarea
-                rows={6}
                 name="message"
+                rows={6}
                 placeholder="Message"
                 required
                 className="w-full p-3 bg-gray-900 text-white rounded border border-gray-700 resize-none"
@@ -120,6 +146,12 @@ const Contact: React.FC = () => {
               >
                 Send Message
               </button>
+              {messageSent && (
+                <p className="text-green-400 mt-2">Message sent successfully!</p>
+              )}
+              {error && (
+                <p className="text-red-400 mt-2">Failed to send message. Try again.</p>
+              )}
             </form>
           </div>
         </div>
@@ -140,7 +172,6 @@ const Contact: React.FC = () => {
           <i className="fa-brands fa-linkedin-in hover:text-pink-500 cursor-pointer"></i>
         </div>
       </section>
-
     </div>
   );
 };
