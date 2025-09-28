@@ -2,9 +2,9 @@ import React from "react";
 
 const Motto: React.FC = () => {
   return (
-    <section className="p-8 text-center">
-      <h2 className="text-3xl font-semibold mb-4">Our Motto</h2>
-      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+    <section className="p-8 text-center bg-gray-800 text-white">
+      <h2 className="text-3xl font-semibold mb-4 text-white">Our Motto</h2>
+      <p className="text-2xl text-purple-400 font-semibold max-w-3xl mx-auto">
       Empowering Innovation, Bridging Quantum Futures.
       </p>
     </section>

@@ -7,6 +7,7 @@ import Events from "./pages/Events";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/nav/Navbar";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 
 const App: React.FC = () => {
@@ -23,6 +24,7 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/events" element={<Events />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/posts/:id" element={<BlogPost />} />
             <Route path="/*" element={<NotFound />} />
             <Route path="contact" element={<Contact/>} />
           </Routes>

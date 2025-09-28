@@ -37,8 +37,8 @@ const Gallery: React.FC = () => {
   const getNextIndex = () => (currentImageIndex + 1) % images.length;
 
   return (
-    <section className="p-8 text-center bg-gray-100">
-      <h2 className="text-3xl font-semibold mb-4">
+    <section className="p-8 text-center bg-gray-900 text-white">
+      <h2 className="text-3xl font-semibold mb-4 text-white">
         View Some of Our Pictures:
       </h2>
       <div className="relative flex justify-between items-center mb-4 w-full">
@@ -86,8 +86,8 @@ const Gallery: React.FC = () => {
           ▶
         </button>
       </div>
-      <h2 className="text-3xl font-semibold mb-4">Our Purpose</h2>
-      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+      <h2 className="text-3xl font-semibold mb-4 text-white">Our Purpose</h2>
+      <p className="text-lg text-gray-300 max-w-3xl mx-auto">
         Welcome to the Quantum Science and Engineering Club at TMU. Our mission
         is to connect students with industry leaders, host educational events,
         and advance understanding of quantum technology. Join us to secure

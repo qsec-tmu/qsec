@@ -1,22 +1,33 @@
 import React, { useState } from "react";
+import QuantumQuiz from "../components/interactive/QuantumQuiz";
+import QuantumFloatingElements from "../components/decorations/QuantumFloatingElements";
 
 const events = [
   {
     title: "Quantum Computing Workshop",
     date: "October 10, 2024",
-    description: "Explore the fundamentals of quantum computing and its real-world applications.",
+    time: "4:00 PM - 5:00 PM",
+    location: "TMU Science Building, Room 201",
+    cost: "Free",
+    description: "Join us for an immersive exploration into the fascinating world of quantum computing! This workshop is designed for both beginners and those with some background in computer science who want to understand the fundamentals of quantum computing and its real-world applications.",
     image: "../src/assets/IMG_4164.JPG",
   },
   {
     title: "Google's Cubit Game Introduction",
     date: "February 13, 2025",
-    description: "A very basic, beginner-friendly introduction to quantum computing through a gaming theme.",
+    time: "4:00 PM - 5:00 PM",
+    location: "TMU Science Building, Room 201",
+    cost: "Free",
+    description: "Get ready to dive into the quantum world through Google's innovative Cubit Game! This beginner-friendly introduction to quantum computing uses gaming mechanics to make complex quantum concepts accessible and fun for everyone.",
     image: "../src/assets/IMG_4176.JPG",
   },
   {
     title: "Quantum Opportunities Panel",
     date: "November 12, 2024",
-    description: "A panel the club has hosted, starring professionals in the field from UofT, IBM, and TMU.",
+    time: "4:00 PM - 5:00 PM",
+    location: "TMU Science Building, Room 201",
+    cost: "Free",
+    description: "Join us for an exclusive panel discussion featuring leading professionals from the quantum computing industry. This event brings together experts from University of Toronto, IBM, and TMU to share insights about career opportunities, industry trends, and the future of quantum technology.",
     image: "../src/assets/IMG_4177.JPG",
   },
 ];
@@ -33,7 +44,9 @@ const Events: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="relative">
+      <QuantumFloatingElements />
+      
       {/* Header */}
       <br /><br /><br />
       <section className="relative bg-gray-800 py-16 px-4 text-center">
@@ -64,14 +77,24 @@ const Events: React.FC = () => {
           Join us for engaging discussions, workshops, and experiments exploring
           the mysteries of quantum science.
         </p>
+        
+        {/* Interactive Quantum Quiz */}
+        <div className="mb-8 w-full max-w-2xl">
+          <QuantumQuiz />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
           {events.map((event, index) => (
             <div key={index} className="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
               <img src={event.image} alt={event.title} className="w-full h-96 object-cover" />
               <div className="p-4">
                 <h2 className="text-2xl font-semibold">{event.title}</h2>
-                <p className="text-gray-400">{event.date}</p>
-                <p className="text-gray-300 mt-2">{event.description}</p>
+                <div className="text-gray-400 space-y-1 mt-2">
+                  <p><strong>Date:</strong> {event.date}</p>
+                  <p><strong>Time:</strong> {event.time}</p>
+                  <p><strong>Location:</strong> {event.location}</p>
+                  <p><strong>Cost:</strong> {event.cost}</p>
+                </div>
+                <p className="text-gray-300 mt-3">{event.description}</p>
               </div>
             </div>
           ))}

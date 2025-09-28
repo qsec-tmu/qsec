@@ -2,16 +2,19 @@ import React from "react";
 import Hero from "../components/home/Hero";
 import Gallery from "../components/home/Gallery";
 import Motto from "../components/home/Motto";
+import QuantumParticles from "../components/interactive/QuantumParticles";
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <div className="relative">
+      <QuantumParticles />
       <Hero />
       <Gallery />
       <Motto />
    
       {/* Footer */}
       <section className="bg-gray-800 text-gray-300 py-12 px-4">
+        
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-start gap-8 text-center md:text-left">
           {/* Left: Icons & Labels - Right Aligned */}
           <div className="space-y-8 md:w-1/2 md:items-end md:flex md:flex-col md:text-right pr-4">
