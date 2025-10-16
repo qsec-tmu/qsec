@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
+// ✅ Reusable particle type
+type Particle = {
+  id: number;
+  x: number;
+  y: number;
+  type: 'quantum' | 'classical';
+  caught: boolean;
+};
+
 const QuantumGame: React.FC = () => {
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(30);
   const [gameActive, setGameActive] = useState(false);
-  const [particles, setParticles] = useState<Array<{
-    id: number;
-    x: number;
-    y: number;
-    type: 'quantum' | 'classical';
-    caught: boolean;
-  }>>([]);
+  const [particles, setParticles] = useState<Particle[]>([]);
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
@@ -27,7 +30,7 @@ const QuantumGame: React.FC = () => {
     if (gameActive) {
       const interval = setInterval(() => {
         setParticles(prev => {
-          const newParticle = {
+          const newParticle: Particle = {
             id: Date.now() + Math.random(),
             x: Math.random() * 300,
             y: 0,
@@ -46,10 +49,12 @@ const QuantumGame: React.FC = () => {
     if (gameActive) {
       const interval = setInterval(() => {
         setParticles(prev => 
-          prev.map(particle => ({
-            ...particle,
-            y: particle.y + 2
-          })).filter(particle => particle.y < 400)
+          prev
+            .map(particle => ({
+              ...particle,
+              y: particle.y + 2
+            }))
+            .filter(particle => particle.y < 400)
         );
       }, 50);
 
@@ -63,10 +68,12 @@ const QuantumGame: React.FC = () => {
     } else {
       setScore(Math.max(0, score - 5));
     }
-    
-    setParticles(prev => prev.map(particle => 
-      particle.id === id ? { ...particle, caught: true } : particle
-    ));
+
+    setParticles(prev =>
+      prev.map(particle =>
+        particle.id === id ? { ...particle, caught: true } : particle
+      )
+    );
   };
 
   const startGame = () => {
@@ -80,11 +87,11 @@ const QuantumGame: React.FC = () => {
   return (
     <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
       <h3 className="text-2xl font-bold text-white mb-4">Quantum Particle Catcher</h3>
-      
+
       <div className="text-center mb-6">
         <div className="text-3xl font-bold text-purple-400 mb-2">Score: {score}</div>
         <div className="text-lg text-gray-300 mb-4">Time: {timeLeft}s</div>
-        
+
         {!gameActive && !gameOver && (
           <button
             onClick={startGame}
@@ -93,7 +100,7 @@ const QuantumGame: React.FC = () => {
             Start Quantum Game
           </button>
         )}
-        
+
         {gameOver && (
           <div className="mb-4">
             <div className="text-2xl font-bold text-white mb-2">Game Over!</div>
@@ -125,8 +132,8 @@ const QuantumGame: React.FC = () => {
             key={particle.id}
             onClick={() => catchParticle(particle.id, particle.type)}
             className={`absolute w-6 h-6 rounded-full transition-all duration-200 ${
-              particle.type === 'quantum' 
-                ? 'bg-purple-500 hover:bg-purple-400' 
+              particle.type === 'quantum'
+                ? 'bg-purple-500 hover:bg-purple-400'
                 : 'bg-gray-500 hover:bg-gray-400'
             } ${particle.caught ? 'opacity-0' : 'opacity-100'}`}
             style={{
@@ -139,7 +146,7 @@ const QuantumGame: React.FC = () => {
             </div>
           </button>
         ))}
-        
+
         {gameActive && (
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
             <div className="text-sm text-gray-400">
