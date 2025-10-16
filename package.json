@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://sindigura.github.io/qsec",
+  "homepage": "https://SindiGura.github.io/qsec",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
