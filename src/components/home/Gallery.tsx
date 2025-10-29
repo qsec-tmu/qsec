@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 const Gallery: React.FC = () => {
   const images = [
-    "src/assets/IMG_4164.JPG",
-    "src/assets/IMG_4176.JPG",
-    "src/assets/IMG_7187.JPG",
-    "src/assets/IMG_4177.JPG",
+  "/images/IMG_4164.JPG",
+  "/images/IMG_4176.JPG",
+  "/images/IMG_7187.JPG",
+  "/images/IMG_4177.JPG",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
