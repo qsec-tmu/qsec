@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
       {/* Logo Section */}
       <div className="flex items-center space-x-4">
         <div className="w-16 h-16 rounded-full">
-          <img src ="src\assets\1738277998717-2208217d-a878-4b79-8d45-8567638453f2_1.jpg"></img>
+          <img src ="\images\1738277998717-2208217d-a878-4b79-8d45-8567638453f2_1.jpg"></img>
           </div> {/* Purple Logo */}
         <span className="text-2xl sm:text-xl md:text-2xl font-bold hidden sm:block">
           Quantum Science and Engineering

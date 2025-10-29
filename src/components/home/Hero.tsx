@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
   const quote = quantumQuotes[today];
 
   return (
-    <div className="relative h-screen flex flex-col justify-center items-center bg-cover bg-center bg-[url('./src/assets/heroBackground.png')] text-white">
+    <div className="relative h-screen flex flex-col justify-center items-center bg-cover bg-center bg-[url('/images/heroBackground.png')] text-white">
       <div className="w-4/5">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-center">
           Quantum Science and Engineering

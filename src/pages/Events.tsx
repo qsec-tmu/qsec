@@ -10,7 +10,7 @@ const events = [
     location: "TMU Science Building, Room 201",
     cost: "Free",
     description: "Join us for an immersive exploration into the fascinating world of quantum computing! This workshop is designed for both beginners and those with some background in computer science who want to understand the fundamentals of quantum computing and its real-world applications.",
-    image: "../src/assets/IMG_4164.JPG",
+    image: "/images/IMG_4164.JPG",
   },
   {
     title: "Google's Cubit Game Introduction",
@@ -19,7 +19,7 @@ const events = [
     location: "TMU Science Building, Room 201",
     cost: "Free",
     description: "Get ready to dive into the quantum world through Google's innovative Cubit Game! This beginner-friendly introduction to quantum computing uses gaming mechanics to make complex quantum concepts accessible and fun for everyone.",
-    image: "../src/assets/IMG_4176.JPG",
+    image: "/images/IMG_4176.JPG",
   },
   {
     title: "Quantum Opportunities Panel",
@@ -28,7 +28,7 @@ const events = [
     location: "TMU Science Building, Room 201",
     cost: "Free",
     description: "Join us for an exclusive panel discussion featuring leading professionals from the quantum computing industry. This event brings together experts from University of Toronto, IBM, and TMU to share insights about career opportunities, industry trends, and the future of quantum technology.",
-    image: "../src/assets/IMG_4177.JPG",
+    image: "/images/IMG_4177.JPG",
   },
 ];
 

@@ -58,7 +58,7 @@ export const templatePostsData: Omit<BlogPostData, 'content'>[] = [
     createdAt: "2024-10-10T00:00:00Z",
     authorName: "QSEC Team",
     published: true,
-    image: "/src/assets/IMG_4164.JPG",
+    image: "/images/IMG_4164.JPG",
     category: "Workshop, Quantum Computing",
     eventDate: "October 10, 2024"
   },
@@ -68,7 +68,7 @@ export const templatePostsData: Omit<BlogPostData, 'content'>[] = [
     createdAt: "2025-02-13T00:00:00Z",
     authorName: "QSEC Team",
     published: true,
-    image: "/src/assets/IMG_4176.JPG",
+    image: "/images/IMG_4176.JPG",
     category: "Workshop, Quantum Gaming, Beginner-Friendly",
     eventDate: "February 13, 2025"
   },
@@ -78,7 +78,7 @@ export const templatePostsData: Omit<BlogPostData, 'content'>[] = [
     createdAt: "2024-11-12T00:00:00Z",
     authorName: "QSEC Team",
     published: true,
-    image: "/src/assets/IMG_4177.JPG",
+    image: "/images/IMG_4177.JPG",
     category: "Panel Discussion, Career Development, Industry Insights",
     eventDate: "November 12, 2024"
   }
