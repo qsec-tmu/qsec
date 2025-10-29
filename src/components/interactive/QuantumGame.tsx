@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-const QuantumGame: React.FC = () => {
+// Explicit union and object types
+type PieceType = 'quantum' | 'classical';
+type Piece = {
+  id: number;
+  x: number;
+  y: number;
+  type: PieceType;
+  caught: boolean;
+};
+
+  const QuantumGame: React.FC = () => {
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(30);
   const [gameActive, setGameActive] = useState(false);
-  const [particles, setParticles] = useState<Array<{
-    id: number;
-    x: number;
-    y: number;
-    type: 'quantum' | 'classical';
-    caught: boolean;
-  }>>([]);
+  const [pieces, setPieces] = useState<Piece[]>([]);
   const [gameOver, setGameOver] = useState(false);
 
+  // Countdown timer
   useEffect(() => {
     if (gameActive && timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -23,18 +28,19 @@ const QuantumGame: React.FC = () => {
     }
   }, [gameActive, timeLeft]);
 
+  // Spawn new pieces
   useEffect(() => {
     if (gameActive) {
       const interval = setInterval(() => {
-        setParticles(prev => {
-          const newParticle = {
+        setPieces(prev => {
+          const newPiece: Piece = {
             id: Date.now() + Math.random(),
             x: Math.random() * 300,
             y: 0,
             type: Math.random() > 0.7 ? 'quantum' : 'classical',
-            caught: false
+            caught: false,
           };
-          return [...prev, newParticle];
+          return [...prev, newPiece];
         });
       }, 800);
 
@@ -42,14 +48,17 @@ const QuantumGame: React.FC = () => {
     }
   }, [gameActive]);
 
+  // Animate falling pieces
   useEffect(() => {
     if (gameActive) {
       const interval = setInterval(() => {
-        setParticles(prev => 
-          prev.map(particle => ({
-            ...particle,
-            y: particle.y + 2
-          })).filter(particle => particle.y < 400)
+        setPieces(prev =>
+          prev
+            .map(piece => ({
+              ...piece,
+              y: piece.y + 2,
+            }))
+            .filter(piece => piece.y < 400)
         );
       }, 50);
 
@@ -57,16 +66,19 @@ const QuantumGame: React.FC = () => {
     }
   }, [gameActive]);
 
-  const catchParticle = (id: number, type: 'quantum' | 'classical') => {
+  // Handle catching a piece
+  const catchPiece = (id: number, type: PieceType) => {
     if (type === 'quantum') {
       setScore(score + 10);
     } else {
       setScore(Math.max(0, score - 5));
     }
-    
-    setParticles(prev => prev.map(particle => 
-      particle.id === id ? { ...particle, caught: true } : particle
-    ));
+
+    setPieces(prev =>
+      prev.map(piece =>
+        piece.id === id ? { ...piece, caught: true } : piece
+      )
+    );
   };
 
   const startGame = () => {
@@ -74,17 +86,23 @@ const QuantumGame: React.FC = () => {
     setTimeLeft(30);
     setGameActive(true);
     setGameOver(false);
-    setParticles([]);
+    setPieces([]);
   };
 
   return (
     <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
-      <h3 className="text-2xl font-bold text-white mb-4">Quantum Particle Catcher</h3>
-      
+      <h3 className="text-2xl font-bold text-white mb-4">
+        Quantum Particle Catcher
+      </h3>
+
       <div className="text-center mb-6">
-        <div className="text-3xl font-bold text-purple-400 mb-2">Score: {score}</div>
-        <div className="text-lg text-gray-300 mb-4">Time: {timeLeft}s</div>
-        
+        <div className="text-3xl font-bold text-purple-400 mb-2">
+          Score: {score}
+        </div>
+        <div className="text-lg text-gray-300 mb-4">
+          Time: {timeLeft}s
+        </div>
+
         {!gameActive && !gameOver && (
           <button
             onClick={startGame}
@@ -93,10 +111,12 @@ const QuantumGame: React.FC = () => {
             Start Quantum Game
           </button>
         )}
-        
+
         {gameOver && (
           <div className="mb-4">
-            <div className="text-2xl font-bold text-white mb-2">Game Over!</div>
+            <div className="text-2xl font-bold text-white mb-2">
+              Game Over!
+            </div>
             <div className="text-lg text-gray-300 mb-4">
               Final Score: {score}
             </div>
@@ -113,33 +133,34 @@ const QuantumGame: React.FC = () => {
       {gameActive && (
         <div className="mb-4">
           <div className="text-sm text-gray-400 mb-2">
-            Catch quantum particles (purple) for +10 points, avoid classical particles (gray) for -5 points
+            Catch quantum particles (purple) for +10 points, avoid classical
+            particles (gray) for -5 points
           </div>
         </div>
       )}
 
       {/* Game Area */}
       <div className="relative w-full h-96 bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
-        {particles.map(particle => (
+        {pieces.map(piece => (
           <button
-            key={particle.id}
-            onClick={() => catchParticle(particle.id, particle.type)}
+            key={piece.id}
+            onClick={() => catchPiece(piece.id, piece.type)}
             className={`absolute w-6 h-6 rounded-full transition-all duration-200 ${
-              particle.type === 'quantum' 
-                ? 'bg-purple-500 hover:bg-purple-400' 
+              piece.type === 'quantum'
+                ? 'bg-purple-500 hover:bg-purple-400'
                 : 'bg-gray-500 hover:bg-gray-400'
-            } ${particle.caught ? 'opacity-0' : 'opacity-100'}`}
+            } ${piece.caught ? 'opacity-0' : 'opacity-100'}`}
             style={{
-              left: `${particle.x}px`,
-              top: `${particle.y}px`,
+              left: `${piece.x}px`,
+              top: `${piece.y}px`,
             }}
           >
             <div className="w-full h-full flex items-center justify-center text-xs text-white">
-              {particle.type === 'quantum' ? '⚛️' : '●'}
+              {piece.type === 'quantum' ? '⚛️' : '●'}
             </div>
           </button>
         ))}
-        
+
         {gameActive && (
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
             <div className="text-sm text-gray-400">
